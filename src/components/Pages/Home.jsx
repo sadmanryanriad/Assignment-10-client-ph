@@ -1,10 +1,12 @@
+import Banner from "../Header/Banner";
+
 const Home = () => {
   return (
-    <>
-      <h1 className="flex justify-center items-center h-screen text-6xl">
-        Vite + React
-      </h1>
-    </>
+    <div className="">
+      <Banner></Banner>
+      <div className="w-[80%] mx-auto">
+      </div>
+    </div>
   );
 };
 
