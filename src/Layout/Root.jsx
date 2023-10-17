@@ -3,11 +3,18 @@ import { Outlet } from 'react-router-dom';
 
 const Root = () => {
     return (
-        <div>
-            <Navbar></Navbar>
-            <Outlet></Outlet>
+        <div className="relative">
+          <img
+            className="w-screen h-screen fixed top-0 left-0 z-0"
+            src="/scattered-forcefields.svg"
+            alt=""
+          />
+          <div className="max-w-6xl mx-auto relative">
+            <Navbar />
+            <Outlet />
+          </div>
         </div>
-    );
+      );
 };
 
 export default Root;
