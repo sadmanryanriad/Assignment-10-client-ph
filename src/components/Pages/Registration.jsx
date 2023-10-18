@@ -1,13 +1,38 @@
-import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../Provider/AuthProvider';
+import toast from 'react-hot-toast';
+import { BsCursorText,BsImageFill } from "react-icons/bs";
+
 
 const Registration = () => {
 
 
+  const { createUser, handleUpdateProfile } = useContext(AuthContext);
+  const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    const name = e.target.name.value;
+    const image = e.target.image.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
-    console.log(email, password);
+    if(!/^(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}[\]:;<>,.?/~\\-]).{6,}$/.test(password)){
+      toast.error('Password must have 6 character, a capital and a special character.');
+      return;
+    }
+    console.log(email, password, name, image );
+    createUser(email, password)
+      .then(() => {
+        handleUpdateProfile(name, image);
+        toast.success("user created successfully!");
+        navigate("/");
+        window.location.reload();
+      })
+      .catch((error) => {
+        toast.error(error);
+        console.log(error.message);
+      });
   };
 
   return (
@@ -24,7 +49,48 @@ const Registration = () => {
           </div>
         </div>
         <div className="mt-10">
-          <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
+            {/* input */}
+            <div className="flex flex-col mb-6">
+              <label
+                type="text"
+                className="mb-1 text-xs sm:text-sm tracking-wide text-gray-600"
+              >
+                Name:
+              </label>
+              <div className="relative">
+                <div className="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-green-400">
+                  <BsCursorText></BsCursorText>
+                </div>
+
+                <input
+                  type="text"
+                  name="name"
+                  className="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-lg border border-gray-400 w-full py-2 focus:outline-none focus:border-green-400"
+                  placeholder="Your name"
+                />
+              </div>
+            </div>
+            <div className="flex flex-col mb-6">
+              <label
+                type="text"
+                className="mb-1 text-xs sm:text-sm tracking-wide text-gray-600"
+              >
+                Image link:
+              </label>
+              <div className="relative">
+                <div className="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-green-400">
+                  <BsImageFill></BsImageFill>
+                </div>
+
+                <input
+                  type="text"
+                  name="image"
+                  className="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-lg border border-gray-400 w-full py-2 focus:outline-none focus:border-green-400"
+                  placeholder="Image link"
+                />
+              </div>
+            </div>
             <div className="flex flex-col mb-6">
               <label
                 type="email"
@@ -95,7 +161,7 @@ const Registration = () => {
             <div className="flex w-full mt-10">
               <button
                 type="submit"
-                className="flex items-center justify-center focus:outline-none text-white text-sm sm:text-base bg-green-600 hover:bg-green-700 rounded py-2 w-full transition duration-150 ease-in"
+                className="flex items-center justify-center focus:outline-none text-white text-sm sm:text-base bg-gradient-to-r from-green-500 via-success to-green-400 hover:text-black rounded py-2 w-full transition duration-150 ease-in"
               >
                 <span className="mr-2 uppercase">Create Account</span>
                 <span>

@@ -1,6 +1,8 @@
 import { Link, NavLink } from "react-router-dom";
 import { FaCar } from "react-icons/fa";
 import { FiLogIn } from "react-icons/fi";
+import { useContext } from "react";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const menu = (
   <>
@@ -24,22 +26,28 @@ const menu = (
         Registration
       </NavLink>
     </li>
+    <li>
+      <NavLink
+        to="/cart"
+        className={({ isActive, isPending }) =>
+          isPending ? "pending" : isActive ? "active" : ""
+        }
+      >
+        Cart
+      </NavLink>
+    </li>
   </>
 );
 
 const Navbar = () => {
 
-  const user = {
-    // photoURL : 'https://i.ibb.co/25t0Ffv/Rectangle-4287-2.png',
-    // displayName: 'sadman ryan',
-    // email: true
-  };
+  const {user,logout} = useContext(AuthContext);
 
   return (
     <div className="navbar">
       <div className="navbar-start">
         <div className="dropdown">
-          <label tabIndex={0} className="btn btn-ghost lg:hidden">
+          <label tabIndex={0} className="btn btn-sm btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -67,7 +75,7 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1 text-lg">{menu}</ul>
+        <ul className="menu menu-horizontal menu-sm px-1 text-lg">{menu}</ul>
       </div>
       <div className="navbar-end">
         {user?.email ? (
@@ -89,6 +97,7 @@ const Navbar = () => {
               <li>
                 <button
                   className="btn-warning bg-green-400 hover:text-white text-lg"
+                  onClick={logout}
                 >
                   Logout
                 </button>
@@ -97,7 +106,7 @@ const Navbar = () => {
           </div>
         ) : (
           <Link to="/login">
-            <button className="btn bg-green-400">Login<span><FiLogIn></FiLogIn></span></button>
+            <button className="btn btn-sm bg-green-400">Login<span><FiLogIn></FiLogIn></span></button>
           </Link>
         )}
       </div>

@@ -1,18 +1,39 @@
+import { useContext } from "react";
+import toast from "react-hot-toast";
 import { FaFacebook, FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const handleButton = () => {
   console.log("button clicked");
 };
 
-const handleSubmit = (e) => {
-  e.preventDefault();
-  const email = e.target.email.value;
-  const password = e.target.password.value;
-  console.log(email, password);
-};
-
 const Login = () => {
+  const navigate = useNavigate("/");
+  const { login } = useContext(AuthContext);
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    if(!/^(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}[\]:;<>,.?/~\\-]).{6,}$/.test(password)){
+      toast.error('Password must have 6 character, a capital and a special character.');
+      return;
+    }
+    console.log(email, password);
+
+    login(email, password)
+      .then(() => {
+        toast.success("log in successful");
+        navigate("/");
+        window.location.reload();
+      })
+      .catch((error) => {
+        toast.error(error.message);
+        console.log(error.message);
+      });
+  };
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-top md:pt-10">
       <div className="flex flex-col bg-white shadow-md px-4 sm:px-6 md:px-8 lg:px-10 py-8 rounded-md w-full max-w-md">
@@ -45,7 +66,7 @@ const Login = () => {
           </div>
         </div>
         <div className="mt-10">
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleLogin}>
             <div className="flex flex-col mb-6">
               <label
                 type="email"
