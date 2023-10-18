@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import toast from "react-hot-toast";
-import { FaFacebook, FaGoogle } from "react-icons/fa";
+import { FaGoogle } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 
@@ -48,15 +48,6 @@ const Login = () => {
             <FaGoogle></FaGoogle>
           </span>
           <span>Login with Google</span>
-        </button>
-        <button
-          onClick={handleButton}
-          className="relative mt-6 border rounded-md py-2 text-sm text-gray-800 bg-gray-100 hover:bg-gray-200"
-        >
-          <span className="absolute left-0 top-0 flex items-center justify-center h-full w-10 text-2xl">
-            <FaFacebook></FaFacebook>
-          </span>
-          <span>Login with Facebook</span>
         </button>
         <div className="relative mt-10 h-px bg-gray-300">
           <div className="absolute left-0 top-0 flex justify-center w-full -mt-2">
