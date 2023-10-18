@@ -7,7 +7,7 @@ import Cart from "../components/Pages/Cart";
 import ErrorPage from "../components/Pages/ErrorPage";
 import AddProduct from "../components/Pages/AddProduct";
 import PrivateRoute from "../components/PrivateRoute/PrivateRouteCart";
-import Cars from "../components/Pages/Brands";
+import BrandProducts from "../components/Pages/BrandProducts";
 
 const router = createBrowserRouter([
   {
@@ -44,8 +44,8 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/:brands",
-        element: <Cars></Cars>
+        path: "/brands/:brands",
+        element: <BrandProducts></BrandProducts>
       }
     ],
   },
