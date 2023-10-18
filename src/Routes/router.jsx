@@ -5,11 +5,13 @@ import Registration from "../components/Pages/Registration";
 import Login from "../components/Pages/Login";
 import Cart from "../components/Pages/Cart";
 import PrivateRouteCart from "../components/PrivateRoute/PrivateRouteCart";
+import ErrorPage from "../components/Pages/ErrorPage";
 
 const router = createBrowserRouter([
     {
       path: "/",
       element: <Root></Root>,
+      errorElement: <ErrorPage></ErrorPage>,
       children: [
         {
             path:'/',

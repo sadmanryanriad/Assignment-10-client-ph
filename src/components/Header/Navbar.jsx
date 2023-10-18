@@ -71,7 +71,7 @@ const Navbar = () => {
           </ul>
         </div>
         <Link to={"/"} className=" normal-case text-xl">
-        <div className="flex gap-2 items-center font-semibold p-3">Automotive <span><FaCar></FaCar></span></div>
+        <div className="flex gap-2 items-center font-semibold pl-3">Automotive <span><FaCar></FaCar></span></div>
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
