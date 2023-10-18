@@ -4,7 +4,7 @@ import { AuthContext } from "../Provider/AuthProvider";
 import PrivateError from "./PrivateError";
 import Spinner from "../Spinner/Spinner";
 
-const PrivateRouteCart = ({ children }) => {
+const PrivateRoute = ({ children }) => {
   const { user, loading } = useContext(AuthContext);
 
   if (loading) return <Spinner></Spinner>;
@@ -14,8 +14,8 @@ const PrivateRouteCart = ({ children }) => {
   return children;
 };
 
-PrivateRouteCart.propTypes = {
+PrivateRoute.propTypes = {
   children: PropTypes.object,
 };
 
-export default PrivateRouteCart;
+export default PrivateRoute;
