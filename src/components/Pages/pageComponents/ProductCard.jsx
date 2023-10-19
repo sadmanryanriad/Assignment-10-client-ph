@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
-  const { id, name, brand, type, price, rating, image } = product;
+  const { _id:id, name, brand, type, price, rating, image } = product;
 
   return (
     <div className="border p-4 m-4 md:m-0 rounded-lg text-center">
@@ -14,12 +14,12 @@ const ProductCard = ({ product }) => {
         <p className="text-green-600 text-lg font-semibold">Price: ${price}</p>
         <p className="text-sm text-yellow-500">Rating: {rating}</p>
         <div className="mt-4">
-          <Link to={`/productdetails/${id}`}>
+          <Link to={`/brands/product/${id}`}>
             <button className="bg-[#2B3440] text-white px-4 py-2 rounded-md mr-2">
               See Details
             </button>
           </Link>
-          <Link to={`/updateproduct/${id}`}>
+          <Link to={`/brands/updateproduct/${id}`}>
             <button className="bg-green-400 text-white px-4 py-2 rounded-md mr-2">
               Update
             </button>
