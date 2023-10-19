@@ -33,7 +33,7 @@ const UpdateProduct = () => {
   };
 
   return (
-    <div className="w-[90%] mx-auto">
+    <div className="w-[90%] mx-auto dark:text-gray-800">
       <h2 className="text-3xl font-extrabold text-center mb-7">
         Update Product:{" "}
       </h2>
@@ -157,7 +157,7 @@ const UpdateProduct = () => {
           <input
             type="submit"
             value="Update Coffee"
-            className="btn bg-green-400"
+            className="btn border-none bg-green-400"
           />
         </div>
       </form>
