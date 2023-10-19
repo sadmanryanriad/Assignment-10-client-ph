@@ -9,7 +9,7 @@ const BrandProducts = () => {
   const [products,setProducts] = useState([]);
 
   useEffect(()=>{
-    fetch(`http://localhost:3000/brands/${brand.toLocaleLowerCase()}`)
+    fetch(`http://localhost:3000/brands/${brand.toLowerCase()}`)
     .then(res=>res.json())
     .then(data=>{
       setProducts(data);

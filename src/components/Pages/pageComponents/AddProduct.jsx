@@ -32,7 +32,7 @@ const AddProduct = () => {
       console.log(Product);
   
       // send data to the server
-      fetch("http://localhost:3000/products", {
+      fetch("http://localhost:3000/brands", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -155,9 +155,9 @@ const AddProduct = () => {
                   <option>toyota</option>
                   <option>ford</option>
                   <option>bmw</option>
-                  <option>Mercedes-benz</option>
+                  <option>mercedes-benz</option>
                   <option>tesla</option>
-                  <option>Honda</option>
+                  <option>honda</option>
                 </select>
               </label>
             </div>
