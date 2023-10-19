@@ -9,6 +9,7 @@ import AddProduct from "../components/Pages/AddProduct";
 import PrivateRoute from "../components/PrivateRoute/PrivateRouteCart";
 import BrandProducts from "../components/Pages/BrandProducts";
 import ProductDetails from "../components/Pages/ProductDetails";
+import UpdateProduct from "../components/Pages/UpdateProduct";
 
 const router = createBrowserRouter([
   {
@@ -46,12 +47,24 @@ const router = createBrowserRouter([
       },
       {
         path: "/brands/:brands",
-        element: <BrandProducts></BrandProducts>
+        element: <BrandProducts></BrandProducts>,
       },
       {
         path: "/productdetails/:id",
-        element: <ProductDetails></ProductDetails>
-      }
+        element: (
+          <PrivateRoute>
+            <ProductDetails></ProductDetails>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/updateproduct/:id",
+        element: (
+          <PrivateRoute>
+            <UpdateProduct></UpdateProduct>
+          </PrivateRoute>
+        ),
+      },
     ],
   },
 ]);
