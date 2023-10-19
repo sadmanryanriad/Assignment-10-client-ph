@@ -1,6 +1,9 @@
 import { useState } from "react";
+import { useContext } from "react";
 import { useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { AuthContext } from "../Provider/AuthProvider";
+import toast from "react-hot-toast";
 
 const ProductDetails = () => {
   // const { name, type, image, price, description, rating, brand } = product;
@@ -8,6 +11,7 @@ const ProductDetails = () => {
   const { id } = useParams();
 
   const [product,setProduct] = useState({});
+  const {user} = useContext(AuthContext);
 
   useEffect(()=>{
     fetch(`http://localhost:3000/brands/product/${id}`)
@@ -16,6 +20,27 @@ const ProductDetails = () => {
       setProduct(data);
     })
   },[id])
+
+  const handleAddToCart = ()=>{
+    console.log(user?.email, id);
+    const updatedUer = {
+      email: user?.email,
+      cart: id
+    }
+          // send data to the server
+          fetch("http://localhost:3000/cart", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(updatedUer),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              console.log(data);
+              toast.success("Added to cart!");
+            });
+  }
 
   return (
     <div className="container mx-auto mt-8">
@@ -38,11 +63,9 @@ const ProductDetails = () => {
           <p className="mt-4 w-[80%] mx-auto">
             {product?.description}
           </p>
-          <Link to={`/updateproduct/}`}>
-            <button className="bg-green-400 text-gray-800 font-semibold px-4 py-2 rounded-md mt-4">
+            <button onClick={handleAddToCart} className="bg-green-400 text-gray-800 font-semibold px-4 py-2 rounded-md mt-4">
               Add to Cart
             </button>
-          </Link>
         </div>
       </div>
     </div>

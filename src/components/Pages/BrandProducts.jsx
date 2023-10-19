@@ -3,6 +3,7 @@ import Advertisement from "./pageComponents/Advertisement";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useState } from "react";
+import NoProductFound from "./pageComponents/NoProductFound";
 
 const BrandProducts = () => {
   const {brand} = useParams();
@@ -18,7 +19,10 @@ const BrandProducts = () => {
 
 
   return (
-    <div className="md:p-8 md:w-[95%] lg:w-[80%] mx-auto space-y-5">
+    <>
+    {
+      products.length?
+      <div className="md:p-8 md:w-[95%] lg:w-[80%] mx-auto space-y-5">
         <div className="lg:w-2/3 mx-auto">
         <Advertisement></Advertisement>
         </div>
@@ -29,6 +33,10 @@ const BrandProducts = () => {
         ))}
       </div>
     </div>
+    : 
+    <NoProductFound></NoProductFound>
+    }
+    </>
   );
 };
 
