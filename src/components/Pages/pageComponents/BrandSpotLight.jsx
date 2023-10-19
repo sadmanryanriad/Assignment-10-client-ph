@@ -12,7 +12,7 @@ const BrandSpotlight = () => {
         alt="Toyota"
         className="w-full lg:w-[50%] mx-auto"
       />
-      <p className="mt-4 w-2/3 mx-auto">
+      <p className="mt-4 md:w-2/3 mx-auto">
         Toyota is known for its reliability and innovation in the automotive
         industry. Explore a wide range of Toyota vehicles and accessories
         designed to enhance your driving experience.

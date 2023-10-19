@@ -2,9 +2,9 @@
 const LatestDeals = () => {
   return (
 <div>
-    <div className="text-center mt-5">
+    <div className="text-center mt-10 md:mt-20">
         <h2 className="text-3xl font-semibold mb-2">Our Latest Deals</h2>
-        <p className="text-gray-500 mb-4  w-2/3 mx-auto">
+        <p className="text-gray-500 mb-4  md:w-2/3 mx-auto">
   Discover Unbeatable Offers! Get ready for a shopping experience like never before. Our latest deals will leave you thrilled and your wallet happy. Dont miss out on these extraordinary savings.
 </p>
 
