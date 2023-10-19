@@ -1,11 +1,16 @@
-// import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
+
+import toast from "react-hot-toast";
 
 const UpdateProduct = () => {
-  // const coffee = useLoaderData();
-  // const { _id, name, quantity, supplier, taste, category, details, photo } = coffee;
+  const product = useLoaderData();
+  const { _id:id, name, type, image, price, description, rating } = product;
+
+  const navigate = useNavigate(null);
 
   const handleUpdate = (event) => {
     event.preventDefault();
+
 
     const form = event.target;
 
@@ -27,9 +32,20 @@ const UpdateProduct = () => {
       brand,
     };
 
-    console.log(updatedProduct);
-
     // send data to the server
+    fetch(`http://localhost:3000/brands/product/${id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(updatedProduct),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        navigate('/');
+        toast.success("Product Updated Successfully!");
+      });
   };
 
   return (
@@ -48,7 +64,7 @@ const UpdateProduct = () => {
               <input
                 type="text"
                 name="name"
-                defaultValue="name"
+                defaultValue={name}
                 placeholder="Name"
                 className="input input-bordered w-full"
               />
@@ -62,7 +78,7 @@ const UpdateProduct = () => {
               <input
                 type="text"
                 name="type"
-                defaultValue="Type"
+                defaultValue={type}
                 placeholder="Type"
                 className="input input-bordered w-full"
               />
@@ -79,7 +95,7 @@ const UpdateProduct = () => {
               <input
                 type="text"
                 name="image"
-                defaultValue="imageURL"
+                defaultValue={image}
                 placeholder="imageURL"
                 className="input input-bordered w-full"
               />
@@ -93,7 +109,7 @@ const UpdateProduct = () => {
               <input
                 type="text"
                 name="price"
-                defaultValue="Price"
+                defaultValue={price}
                 placeholder="Price"
                 className="input input-bordered w-full"
               />
@@ -110,7 +126,7 @@ const UpdateProduct = () => {
               <input
                 type="text"
                 name="description"
-                defaultValue="description"
+                defaultValue={description}
                 placeholder="description"
                 className="input input-bordered w-full"
               />
@@ -124,7 +140,7 @@ const UpdateProduct = () => {
               <input
                 type="text"
                 name="rating"
-                defaultValue="Rating"
+                defaultValue={rating}
                 placeholder="Rating"
                 className="input input-bordered w-full"
               />
@@ -135,7 +151,7 @@ const UpdateProduct = () => {
         <div className="md:flex mb-8">
           <div className="form-control  max-w-xs mx-auto">
             <label className="label">
-              <span className="label-text">Category</span>
+              <span className="label-text">Brand</span>
             </label>
             <label className="input-group">
               <select
@@ -146,9 +162,9 @@ const UpdateProduct = () => {
                 <option>toyota</option>
                 <option>ford</option>
                 <option>bmw</option>
-                <option>Mercedes-benz</option>
+                <option>mercedes-benz</option>
                 <option>tesla</option>
-                <option>Honda</option>
+                <option>honda</option>
               </select>
             </label>
           </div>

@@ -64,6 +64,7 @@ const router = createBrowserRouter([
             <UpdateProduct></UpdateProduct>
           </PrivateRoute>
         ),
+        loader: ({params})=> fetch(`http://localhost:3000/brands/product/${params.id}`)
       },
     ],
   },

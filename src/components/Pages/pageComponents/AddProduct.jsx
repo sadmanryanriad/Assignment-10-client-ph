@@ -144,7 +144,7 @@ const AddProduct = () => {
           <div className="md:flex mb-8">
             <div className="form-control  max-w-xs mx-auto">
               <label className="label">
-                <span className="label-text">Category</span>
+                <span className="label-text">Brand</span>
               </label>
               <label className="input-group">
                 <select
