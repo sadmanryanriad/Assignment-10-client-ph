@@ -26,7 +26,7 @@ const SocialLogin = () => {
     return (
         <button
           onClick={handleButton}
-          className="relative mt-6 border rounded-md py-2 text-sm text-gray-800 bg-gray-100 hover:bg-gray-200"
+          className="relative mt-6 border rounded-md py-2 text-sm text-gray-800 bg-gray-100 dark:bg-slate-400 dark:text-gray-800 dark:hover:bg-slate-200 hover:bg-gray-200"
         >
           <span className="absolute left-0 top-0 flex items-center justify-center h-full w-10 text-2xl">
             <FaGoogle></FaGoogle>

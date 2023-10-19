@@ -6,7 +6,7 @@ import ScrollToTopEffect from "../Utilities/ScrollToTopEffect";
 
 const Root = () => {
   return (
-    <div>
+    <div className="dark:text-base-100 dark:bg-gray-800">
       <ScrollToTopEffect></ScrollToTopEffect>
       <Navbar />
       <Outlet />

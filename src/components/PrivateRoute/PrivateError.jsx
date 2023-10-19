@@ -7,7 +7,7 @@ const PrivateError = () => {
         <div className="text-center">
           <h2 className="text-6xl">Please Login First</h2>
           <Link to={"/login"}>
-            <button className="btn bg-green-400 m-5 mx-auto my-8">Login<span><FiLogIn></FiLogIn></span></button>
+            <button className="btn border-none bg-green-400 m-5 mx-auto my-8">Login<span><FiLogIn></FiLogIn></span></button>
           </Link>
         </div>
       </div>
