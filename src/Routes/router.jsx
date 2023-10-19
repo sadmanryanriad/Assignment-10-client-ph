@@ -5,11 +5,11 @@ import Registration from "../components/Pages/Registration";
 import Login from "../components/Pages/Login";
 import Cart from "../components/Pages/Cart";
 import ErrorPage from "../components/Pages/ErrorPage";
-import AddProduct from "../components/Pages/AddProduct";
 import PrivateRoute from "../components/PrivateRoute/PrivateRouteCart";
 import BrandProducts from "../components/Pages/BrandProducts";
 import ProductDetails from "../components/Pages/ProductDetails";
 import UpdateProduct from "../components/Pages/UpdateProduct";
+import AddProduct from "../components/Pages/pageComponents/AddProduct";
 
 const router = createBrowserRouter([
   {
