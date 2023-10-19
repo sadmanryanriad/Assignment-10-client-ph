@@ -34,7 +34,7 @@ const menu = (
           isPending ? "pending" : isActive ? "active" : ""
         }
       >
-        Cart
+        My Cart
       </NavLink>
     </li>
   </>
