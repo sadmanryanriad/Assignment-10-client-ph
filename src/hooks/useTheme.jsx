@@ -21,7 +21,7 @@ const useTheme = () => {
     document.querySelector("html")?.classList.add(name);
   };
   useEffect(() => {
-    const _theme = localStorage.getItem("theme") || "dark";
+    const _theme = localStorage.getItem("theme") || "light";
     updateTheme(_theme);
   }, []);
 
