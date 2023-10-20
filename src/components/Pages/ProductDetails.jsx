@@ -46,7 +46,7 @@ const ProductDetails = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 ">
         <div>
           <img
-            src="https://i.ibb.co/YhWdptt/joey-banks-YApi-Wyp0lqo-unsplash-1.jpg"
+            src={product?.image}
             alt=""
             className="w-full"
           />
