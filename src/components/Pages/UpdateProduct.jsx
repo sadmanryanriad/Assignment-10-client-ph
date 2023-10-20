@@ -174,7 +174,7 @@ const UpdateProduct = () => {
         <div className="max-w-fit mx-auto">
           <input
             type="submit"
-            value="Update Coffee"
+            value="Update Product"
             className="btn border-none bg-green-400"
           />
         </div>
