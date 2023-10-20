@@ -3,69 +3,40 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 const CartProduct = ({ id }) => {
-    console.log(id);
 
-    const [product,setProduct] = useState({});
-  
-    
-    useEffect(()=>{
-        fetch(`http://localhost:3000/brands/product/${id}`)
-        .then(res=>res.json())
-        .then(data=>{
-          setProduct(data);
-        })
-      },[id])
+  const [product, setProduct] = useState({});
+
+  useEffect(() => {
+    fetch(`http://localhost:3000/brands/product/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setProduct(data);
+      });
+  }, [id]);
+
+  const handleDelete = () => {
+    console.log("delete button clicked");
+  };
 
   return (
     <div>
-      <div className="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start">
-        <img
-          src={product?.image}
-          alt="product-image"
-          className="w-full rounded-lg sm:w-40"
-        />
-        <div className="sm:ml-4 sm:flex sm:w-full sm:justify-between">
-          <div className="mt-5 sm:mt-0">
-            <h2 className="text-lg font-bold text-gray-900">{product?.name}</h2>
-            <p className="mt-1 text-xs text-gray-700 w-[80%]">
-              {product?.description}...
-            </p>
-          </div>
-          <div className="mt-4 flex justify-between im sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
-            <div className="flex items-center border-gray-100">
-              <span className="cursor-pointer rounded-l bg-gray-100 py-1 px-3.5 duration-100 hover:bg-blue-500 hover:text-blue-50">
-                {" "}
-                -{" "}
-              </span>
-              <input
-                className="h-8 w-8 border bg-white text-center text-xs outline-none"
-                type="number"
-                // ekhane default value dite hobe. sudhu value dile warning ase
-                defaultValue="1"
-                min="1"
-              />
-              <span className="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:bg-blue-500 hover:text-blue-50">
-                {" "}
-                +{" "}
-              </span>
-            </div>
-            <div className="flex items-center space-x-4">
-              <p className="text-sm">${product?.price}</p>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                stroke="currentColor"
-                className="h-5 w-5 cursor-pointer duration-150 hover:text-red-500"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </div>
+      <div className="border p-4 m-4 md:m-0 rounded-lg text-center">
+        <img src={product.image} alt="" className="w-80 h-48 mx-auto rounded-lg" />
+        <div className="p-3">
+          <p className="mt-2 text-lg font-semibold">{product.name}</p>
+          <p className="text-sm text-gray-500">Brand: {product.brand}</p>
+          <p className="text-sm text-gray-500">Type: {product.type}</p>
+          <p className="text-green-600 text-lg font-semibold">
+            Price: ${product.price}
+          </p>
+          <p className="text-sm text-yellow-500">Rating: {product.rating}</p>
+          <div className="mt-4">
+            <button
+              onClick={handleDelete}
+              className="bg-red-500 text-white px-4 py-2 rounded-md mr-2"
+            >
+              Delete
+            </button>
           </div>
         </div>
       </div>
@@ -74,7 +45,7 @@ const CartProduct = ({ id }) => {
 };
 
 CartProduct.propTypes = {
-    id: PropTypes.string,
+  id: PropTypes.string,
 };
 
 export default CartProduct;

@@ -2,11 +2,11 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
-  const { _id:id, name, brand, type, price, rating, image } = product;
+  const { _id: id, name, brand, type, price, rating, image } = product;
 
   return (
     <div className="border p-4 m-4 md:m-0 rounded-lg text-center">
-      <img src={image} alt={name} className="w-80 mx-auto rounded-lg" />
+      <img src={image} alt={name} className="w-80  h-48  mx-auto rounded-lg" />
       <div className="p-3">
         <p className="mt-2 text-lg font-semibold">{name}</p>
         <p className="text-sm text-gray-500">Brand: {brand}</p>
