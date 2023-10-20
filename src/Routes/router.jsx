@@ -65,7 +65,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/brands/product/${params.id}`),
+          fetch(
+            `https://assignment-10-server-gamma-six.vercel.app/brands/product/${params.id}`
+          ),
       },
     ],
   },

@@ -8,7 +8,9 @@ const Cart = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/cart/${user?.email}`)
+    fetch(
+      `https://assignment-10-server-gamma-six.vercel.app/cart/${user?.email}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
@@ -16,9 +18,12 @@ const Cart = () => {
   }, [user]);
 
   const handleDelete = (userProductId) => {
-    fetch(`http://localhost:3000/cart/${userProductId}`, {
-      method: "DELETE",
-    })
+    fetch(
+      `https://assignment-10-server-gamma-six.vercel.app/cart/${userProductId}`,
+      {
+        method: "DELETE",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         Swal.fire({

@@ -32,13 +32,16 @@ const UpdateProduct = () => {
     };
 
     // send data to the server
-    fetch(`http://localhost:3000/brands/product/${id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(updatedProduct),
-    })
+    fetch(
+      `https://assignment-10-server-gamma-six.vercel.app/brands/product/${id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(updatedProduct),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

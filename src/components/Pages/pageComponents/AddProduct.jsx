@@ -24,7 +24,7 @@ const AddProduct = () => {
       brand,
     };
     // send data to the server
-    fetch("http://localhost:3000/brands", {
+    fetch("https://assignment-10-server-gamma-six.vercel.app/brands", {
       method: "POST",
       headers: {
         "content-type": "application/json",

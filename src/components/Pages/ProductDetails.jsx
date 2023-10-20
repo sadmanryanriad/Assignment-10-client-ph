@@ -12,7 +12,9 @@ const ProductDetails = () => {
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/brands/product/${id}`)
+    fetch(
+      `https://assignment-10-server-gamma-six.vercel.app/brands/product/${id}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setProduct(data);
@@ -25,7 +27,7 @@ const ProductDetails = () => {
       cart: id,
     };
     // send data to the server
-    fetch("http://localhost:3000/cart", {
+    fetch("https://assignment-10-server-gamma-six.vercel.app/cart", {
       method: "POST",
       headers: {
         "content-type": "application/json",
