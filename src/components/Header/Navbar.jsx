@@ -41,9 +41,7 @@ const menu = (
 );
 
 const Navbar = () => {
-
-  const {user,logout} = useContext(AuthContext);
-
+  const { user, logout } = useContext(AuthContext);
 
   return (
     <div className="navbar">
@@ -73,11 +71,18 @@ const Navbar = () => {
           </ul>
         </div>
         <Link to={"/"} className=" normal-case text-xl">
-        <div className="flex gap-2 items-center font-semibold pl-3 uppercase">Automotive <span><FaCar></FaCar></span></div>
+          <div className="flex gap-2 items-center font-semibold pl-3 uppercase">
+            Automotive{" "}
+            <span>
+              <FaCar></FaCar>
+            </span>
+          </div>
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal menu-sm px-1 text-lg font-semibold">{menu}</ul>
+        <ul className="menu menu-horizontal menu-sm px-1 text-lg font-semibold">
+          {menu}
+        </ul>
       </div>
       <div className="navbar-end">
         <ThemeButton></ThemeButton>
@@ -109,7 +114,12 @@ const Navbar = () => {
           </div>
         ) : (
           <Link to="/login">
-            <button className="btn border-none btn-xs md:btn-sm bg-green-400">Login<span><FiLogIn></FiLogIn></span></button>
+            <button className="btn border-none btn-xs md:btn-sm bg-green-400">
+              Login
+              <span>
+                <FiLogIn></FiLogIn>
+              </span>
+            </button>
           </Link>
         )}
       </div>

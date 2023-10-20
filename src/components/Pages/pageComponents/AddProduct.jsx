@@ -1,11 +1,6 @@
-// import { useLoaderData } from "react-router-dom";
-
 import toast from "react-hot-toast";
 
 const AddProduct = () => {
-  // const coffee = useLoaderData();
-  // const { _id, name, quantity, supplier, taste, category, details, photo } = coffee;
-
   const handleAdd = (event) => {
     event.preventDefault();
 

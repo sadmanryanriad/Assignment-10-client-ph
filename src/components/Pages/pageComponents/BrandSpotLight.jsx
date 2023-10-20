@@ -17,10 +17,10 @@ const BrandSpotlight = () => {
         industry. Explore a wide range of Toyota vehicles and accessories
         designed to enhance your driving experience.
       </p>
-      <Link to={'/brands/toyota'}>
-      <button className="bg-red-500 text-white px-4 py-2 mt-4 rounded-md">
-        Explore Toyota
-      </button>
+      <Link to={"/brands/toyota"}>
+        <button className="bg-red-500 text-white px-4 py-2 mt-4 rounded-md">
+          Explore Toyota
+        </button>
       </Link>
     </div>
   );

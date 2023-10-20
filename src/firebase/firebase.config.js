@@ -11,10 +11,10 @@ const firebaseConfig = {
   projectId: "assignment-10-automotive",
   storageBucket: "assignment-10-automotive.appspot.com",
   messagingSenderId: "511471914406",
-  appId: "1:511471914406:web:700f8fb90c6b3e3ff21367"
+  appId: "1:511471914406:web:700f8fb90c6b3e3ff21367",
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-export const auth = getAuth(app); 
+export const auth = getAuth(app);

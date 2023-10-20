@@ -1,13 +1,10 @@
-import { useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { AuthContext } from '../Provider/AuthProvider';
-import toast from 'react-hot-toast';
-import { BsCursorText,BsImageFill } from "react-icons/bs";
-
+import { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../Provider/AuthProvider";
+import toast from "react-hot-toast";
+import { BsCursorText, BsImageFill } from "react-icons/bs";
 
 const Registration = () => {
-
-
   const { createUser, handleUpdateProfile } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -17,8 +14,12 @@ const Registration = () => {
     const image = e.target.image.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
-    if(!/^(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}[\]:;<>,.?/~\\-]).{6,}$/.test(password)){
-      toast.error('Password must have 6 character, a capital and a special character.');
+    if (
+      !/^(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}[\]:;<>,.?/~\\-]).{6,}$/.test(password)
+    ) {
+      toast.error(
+        "Password must have 6 character, a capital and a special character."
+      );
       return;
     }
     createUser(email, password)
@@ -48,7 +49,7 @@ const Registration = () => {
           </div>
         </div>
         <div className="mt-10">
-        <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit}>
             {/* input */}
             <div className="flex flex-col mb-6">
               <label
@@ -181,8 +182,8 @@ const Registration = () => {
           </form>
         </div>
         <div className="flex justify-center items-center mt-6">
-        <Link
-            to={'/login'}
+          <Link
+            to={"/login"}
             className="inline-flex items-center font-bold text-green-500 hover:text-green-700 text-xs text-center"
           >
             <span>

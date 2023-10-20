@@ -32,7 +32,6 @@ const ProductCard = ({ product }) => {
 
 ProductCard.propTypes = {
   product: PropTypes.object,
-  onDeleteClick: PropTypes.func, // Function to handle delete
 };
 
 export default ProductCard;

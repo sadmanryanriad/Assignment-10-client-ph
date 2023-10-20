@@ -9,7 +9,10 @@ function ThemeButton() {
   };
 
   return (
-    <button className=" p-1 md:p-2 border rounded-full mx-2 md:mx-5" onClick={toggleTheme}>
+    <button
+      className=" p-1 md:p-2 border rounded-full mx-2 md:mx-5"
+      onClick={toggleTheme}
+    >
       {themeIconChanger()}
     </button>
   );

@@ -9,28 +9,15 @@ const CartCard = ({ card, handleDelete }) => {
   const [product, setProduct] = useState({});
 
   useEffect(() => {
-    const dataFetch = () =>{
+    const dataFetch = () => {
       fetch(`http://localhost:3000/brands/product/${id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setProduct(data);
-      });
-    }
+        .then((res) => res.json())
+        .then((data) => {
+          setProduct(data);
+        });
+    };
     dataFetch();
   }, [id]);
-
-
-
-  // const handleDelete = () => {
-  //   fetch(`http://localhost:3000/cart/${userProductId}`, {
-  //     method: "DELETE",
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //       toast.success("item removed");
-  //     });
-  // };
 
   return (
     <div>
@@ -50,7 +37,7 @@ const CartCard = ({ card, handleDelete }) => {
           <p className="text-sm text-yellow-500">Rating: {product.rating}</p>
           <div className="mt-4">
             <button
-              onClick={()=>handleDelete(userProductId)}
+              onClick={() => handleDelete(userProductId)}
               className="bg-red-500 text-white px-4 py-2 rounded-md mr-2"
             >
               Delete
@@ -64,7 +51,7 @@ const CartCard = ({ card, handleDelete }) => {
 
 CartCard.propTypes = {
   card: PropTypes.object,
-  handleDelete: PropTypes.func
+  handleDelete: PropTypes.func,
 };
 
 export default CartCard;

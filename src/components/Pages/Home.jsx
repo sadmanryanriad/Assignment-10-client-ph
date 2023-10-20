@@ -9,9 +9,13 @@ const Home = () => {
   return (
     <div className="">
       <ScrollToTop
-      // Classname to add/override styling (note, !important for overrides might be needed)
-      className=" "
-        smooth color="#EF4444" component={<UpCar></UpCar>} />      <Banner></Banner>
+        // Classname to add/override styling (note, !important for overrides might be needed)
+        className=" "
+        smooth
+        color="#EF4444"
+        component={<UpCar></UpCar>}
+      />{" "}
+      <Banner></Banner>
       <div className="w-[90%] mx-auto">
         <BrandList></BrandList>
         <BrandSpotlight></BrandSpotlight>

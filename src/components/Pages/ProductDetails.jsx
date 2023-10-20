@@ -6,8 +6,6 @@ import { AuthContext } from "../Provider/AuthProvider";
 import toast from "react-hot-toast";
 
 const ProductDetails = () => {
-  // const { name, type, image, price, description, rating, brand } = product;
-
   const { id } = useParams();
 
   const [product, setProduct] = useState({});

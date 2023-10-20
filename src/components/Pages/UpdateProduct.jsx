@@ -4,13 +4,12 @@ import toast from "react-hot-toast";
 
 const UpdateProduct = () => {
   const product = useLoaderData();
-  const { _id:id, name, type, image, price, description, rating } = product;
+  const { _id: id, name, type, image, price, description, rating } = product;
 
   const navigate = useNavigate(null);
 
   const handleUpdate = (event) => {
     event.preventDefault();
-
 
     const form = event.target;
 
@@ -43,7 +42,7 @@ const UpdateProduct = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        navigate('/');
+        navigate("/");
         toast.success("Product Updated Successfully!");
       });
   };
