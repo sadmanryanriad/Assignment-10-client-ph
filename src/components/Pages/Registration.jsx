@@ -21,7 +21,6 @@ const Registration = () => {
       toast.error('Password must have 6 character, a capital and a special character.');
       return;
     }
-    console.log(email, password, name, image );
     createUser(email, password)
       .then(() => {
         handleUpdateProfile(name, image);
