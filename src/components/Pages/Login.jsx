@@ -12,11 +12,14 @@ const Login = () => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    if(!/^(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}[\]:;<>,.?/~\\-]).{6,}$/.test(password)){
-      toast.error('Password must have 6 character, a capital and a special character.');
+    if (
+      !/^(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}[\]:;<>,.?/~\\-]).{6,}$/.test(password)
+    ) {
+      toast.error(
+        "Password must have 6 character, a capital and a special character."
+      );
       return;
     }
-    console.log(email, password);
 
     login(email, password)
       .then(() => {
@@ -35,9 +38,9 @@ const Login = () => {
         <div className="font-medium self-center text-xl sm:text-2xl uppercase text-gray-800">
           Login To Your Account
         </div>
-<SocialLogin></SocialLogin>
+        <SocialLogin></SocialLogin>
         <div className="relative mt-10 h-px ">
-        <div className="absolute left-0 top-0 flex justify-center w-full -mt-2">
+          <div className="absolute left-0 top-0 flex justify-center w-full -mt-2">
             <span className=" px-4 text-xs text-gray-800 uppercase font-semibold">
               Or Login With Email
             </span>
