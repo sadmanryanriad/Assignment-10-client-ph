@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import CartCard from "./pageComponents/CartCard";
-import toast from "react-hot-toast";
+import Swal from "sweetalert2";
 
 const Cart = () => {
   const { user } = useContext(AuthContext);
@@ -21,10 +21,25 @@ const Cart = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        const remaining = products.filter(product=> product._id !== userProductId);
-        setProducts(remaining);
-        toast.success("item removed");
+        Swal.fire({
+          title: "Are you sure?",
+          text: "You won't be able to revert this!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, delete it!",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            if (data.deletedCount > 0) {
+              const remaining = products.filter(
+                (product) => product._id !== userProductId
+              );
+              setProducts(remaining);
+              Swal.fire("Deleted!", "Your file has been deleted.", "success");
+            }
+          }
+        });
       });
   };
 
@@ -36,7 +51,11 @@ const Cart = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         {products?.length ? (
           products.map((card) => (
-            <CartCard key={card._id} card={card} handleDelete={handleDelete}></CartCard>
+            <CartCard
+              key={card._id}
+              card={card}
+              handleDelete={handleDelete}
+            ></CartCard>
           ))
         ) : (
           <p className="text-5xl">
