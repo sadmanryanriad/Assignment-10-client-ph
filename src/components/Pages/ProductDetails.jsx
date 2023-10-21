@@ -41,8 +41,7 @@ const ProductDetails = () => {
       body: JSON.stringify(updatedUer),
     })
       .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
+      .then(() => {
         toast.success("Added to cart!");
       });
   };
