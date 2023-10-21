@@ -44,9 +44,10 @@ const UpdateProduct = () => {
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        navigate("/");
-        toast.success("Product Updated Successfully!");
+        if (data.modifiedCount > 0) {
+          toast.success("Product Updated Successfully!");
+          navigate("/");
+        }
       });
   };
 
