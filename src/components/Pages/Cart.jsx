@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 const Cart = () => {
   const { user } = useContext(AuthContext);
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch(
@@ -14,6 +15,11 @@ const Cart = () => {
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("there was an error: ", error);
+        setLoading(false);
       });
   }, [user]);
 
@@ -49,27 +55,35 @@ const Cart = () => {
   };
 
   return (
-    <div className="rounded-lg max-w-max mx-auto">
-      <h2 className="text-2xl font-bold text-center mt-5 mb-5 md:mb-10">
-        Cart Products
-      </h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-        {products?.length ? (
-          products.map((card) => (
-            <CartCard
-              key={card._id}
-              card={card}
-              handleDelete={handleDelete}
-            ></CartCard>
-          ))
-        ) : (
-          <p className="text-5xl">
-            No data found.{" "}
-            <span className="text-red-500">Add product to show!</span>
-          </p>
-        )}
-      </div>
-    </div>
+    <>
+      {loading ? (
+        <div className="w-screen h-screen flex justify-center items-center">
+          <span className="loading loading-spinner loading-lg text-success text-5xl "></span>
+        </div>
+      ) : (
+        <div className="rounded-lg max-w-max mx-auto">
+          <h2 className="text-2xl font-bold text-center mt-5 mb-5 md:mb-10">
+            Cart Products
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {products?.length ? (
+              products.map((card) => (
+                <CartCard
+                  key={card._id}
+                  card={card}
+                  handleDelete={handleDelete}
+                ></CartCard>
+              ))
+            ) : (
+              <p className="text-5xl">
+                No data found.{" "}
+                <span className="text-red-500">Add product to show!</span>
+              </p>
+            )}
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

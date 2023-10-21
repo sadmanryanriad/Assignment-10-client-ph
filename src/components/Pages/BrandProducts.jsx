@@ -1,13 +1,13 @@
 import ProductCard from "./pageComponents/ProductCard";
 import Advertisement from "./pageComponents/Advertisement";
 import { useParams } from "react-router-dom";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import NoProductFound from "./pageComponents/NoProductFound";
 
 const BrandProducts = () => {
   const { brand } = useParams();
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch(
@@ -16,12 +16,21 @@ const BrandProducts = () => {
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        setLoading(false);
       });
   }, [brand]);
 
   return (
     <>
-      {products.length ? (
+      {loading ? (
+    <div className="w-screen h-screen flex justify-center items-center">
+    <span className="loading loading-spinner loading-lg text-success text-5xl "></span>
+  </div>
+      ) : products.length ? (
         <div className="md:p-8 md:w-[95%] lg:w-[80%] mx-auto space-y-5">
           <div className="lg:w-2/3 mx-auto">
             <Advertisement></Advertisement>
