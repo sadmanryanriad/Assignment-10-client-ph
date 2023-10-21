@@ -20,7 +20,7 @@ const BrandList = () => {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 ">
         {brands.map((brand) => (
           <Link to={`/brands/${brand.name}`} key={brand.id}>
-            <div className="text-center border p-3 rounded-lg">
+            <div className="text-center border p-3 rounded-lg shadow-lg">
               <img
                 src={brand.imageUrl}
                 alt={brand.name}
